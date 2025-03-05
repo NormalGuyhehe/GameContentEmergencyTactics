@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpgnkk1nl32bj"]
+
+[ext_resource type="Script" uid="uid://cwfiv3x4k4r6t" path="res://scripts/structures/house.gd" id="1_1yi6a"]
+[ext_resource type="Texture2D" uid="uid://de5ob1ysf2bjp" path="res://assets/test_assets/house.png" id="1_ihob8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iuxue"]
+size = Vector2(64, 60)
+
+[node name="House" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_1yi6a")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-126, 96, -160, 96, -160, -96, 160, -96, 160, 96, -62, 96, -62, 32, -126, 32)
+
+[node name="HouseImage" type="Sprite2D" parent="."]
+texture = ExtResource("1_ihob8")
+
+[node name="GoInsideArea" type="Area2D" parent="."]
+position = Vector2(-94, 58)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoInsideArea"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_iuxue")
+
+[connection signal="body_entered" from="GoInsideArea" to="." method="_go_inside_area_entered"]

@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://f8hi12kh0pov"]
+
+[ext_resource type="Script" path="res://scenes/levels/level_1.gd" id="1_gtm64"]
+[ext_resource type="PackedScene" uid="uid://dpgnkk1nl32bj" path="res://scenes/objects/house.tscn" id="1_kyxy7"]
+[ext_resource type="PackedScene" uid="uid://bayeswhupyyoo" path="res://scenes/player/player.tscn" id="2_4fpiv"]
+[ext_resource type="PackedScene" uid="uid://crc4sb6cjft48" path="res://scenes/objects/fire_extinguisher.tscn" id="3_bas4f"]
+[ext_resource type="PackedScene" uid="uid://cipuxw2kimtcw" path="res://scenes/objects/fire.tscn" id="4_w3o44"]
+[ext_resource type="PackedScene" uid="uid://pwg8ccy5rop1" path="res://scenes/npc/npc.tscn" id="6_bxbfo"]
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_gtm64")
+
+[node name="House" parent="." instance=ExtResource("1_kyxy7")]
+position = Vector2(547, 96)
+
+[node name="Player" parent="." instance=ExtResource("2_4fpiv")]
+position = Vector2(388, 354)
+
+[node name="FireExtinguisher" parent="Player" instance=ExtResource("3_bas4f")]
+position = Vector2(14, 2)
+extinguish_rate = 70.0
+
+[node name="Fires" type="Node2D" parent="."]
+position = Vector2(547, 96)
+
+[node name="Fire1" parent="Fires" instance=ExtResource("4_w3o44")]
+position = Vector2(1, 61)
+
+[node name="Fire2" parent="Fires" instance=ExtResource("4_w3o44")]
+position = Vector2(64, -60)
+
+[node name="Fire3" parent="Fires" instance=ExtResource("4_w3o44")]
+position = Vector2(-58, -57)
+
+[node name="NPCs" type="Node2D" parent="."]
+position = Vector2(159, 153)
+
+[node name="NPC1" parent="NPCs" instance=ExtResource("6_bxbfo")]
+position = Vector2(3, 51)
+
+[node name="NPC2" parent="NPCs" instance=ExtResource("6_bxbfo")]
+position = Vector2(65, -49)
+
+[node name="NPC3" parent="NPCs" instance=ExtResource("6_bxbfo")]
+position = Vector2(-40, -52)
+
+[connection signal="player_entered" from="House" to="." method="_on_house_player_entered"]
+[connection signal="fire_affected" from="Player/FireExtinguisher" to="." method="_on_fire_affected"]

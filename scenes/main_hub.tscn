@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://083pgcwk5qsb"]
+
+[ext_resource type="PackedScene" uid="uid://bayeswhupyyoo" path="res://scenes/characters/player.tscn" id="1_bybf6"]
+[ext_resource type="PackedScene" uid="uid://bh6x8jm4muot6" path="res://scenes/structures/level_transition.tscn" id="2_6e541"]
+[ext_resource type="PackedScene" uid="uid://c7sokf4iut8w" path="res://scenes/levels/level1/level1_street.tscn" id="3_b1ksp"]
+[ext_resource type="PackedScene" uid="uid://dbxk4hy2yx02h" path="res://scenes/structures/stock.tscn" id="4_yqony"]
+[ext_resource type="PackedScene" uid="uid://cboeu2cy2ksbx" path="res://scenes/structures/trans_hangar.tscn" id="5_u0c3s"]
+
+[node name="MainHub" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_bybf6")]
+position = Vector2(873, 463)
+
+[node name="LevelTransitions" type="Node" parent="."]
+
+[node name="Label" type="Label" parent="LevelTransitions"]
+offset_left = 1010.0
+offset_top = 450.0
+offset_right = 1118.0
+offset_bottom = 473.0
+text = "СИМУЛЯЦИИ"
+
+[node name="Level1Transition" parent="LevelTransitions" instance=ExtResource("2_6e541")]
+position = Vector2(960, 520)
+level_scene = ExtResource("3_b1ksp")
+description = "Пожар в доме"
+
+[node name="Level2Transition" parent="LevelTransitions" instance=ExtResource("2_6e541")]
+position = Vector2(1060, 520)
+
+[node name="Level3Transition" parent="LevelTransitions" instance=ExtResource("2_6e541")]
+position = Vector2(1160, 520)
+
+[node name="Stock" parent="." instance=ExtResource("4_yqony")]
+position = Vector2(194, 160)
+rotation = -1.5708
+
+[node name="Label" type="Label" parent="Stock"]
+offset_left = -17.0
+offset_top = -86.0
+offset_right = 32.0
+offset_bottom = -63.0
+text = "Склад"
+
+[node name="TransHangar" parent="." instance=ExtResource("5_u0c3s")]
+position = Vector2(857, 0)
+
+[node name="Label" type="Label" parent="TransHangar"]
+offset_left = -33.0
+offset_top = -95.0
+offset_right = 15.0
+offset_bottom = -72.0
+text = "Ангар"

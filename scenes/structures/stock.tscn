@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbxk4hy2yx02h"]
+
+[ext_resource type="Texture2D" uid="uid://skcawlh42ov" path="res://assets/test_assets/warehouse_with_things.png" id="1_q1om8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aa0cf"]
+size = Vector2(320, 256)
+
+[node name="Stock" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_aa0cf")
+
+[node name="StockImage" type="Sprite2D" parent="."]
+texture = ExtResource("1_q1om8")

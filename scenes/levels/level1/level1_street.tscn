@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7sokf4iut8w"]
+
+[ext_resource type="PackedScene" uid="uid://cygy5fh6i7lo5" path="res://scenes/levels/level1/level1_base.tscn" id="1_vive8"]
+[ext_resource type="Script" uid="uid://c2jfh0pcxdn8a" path="res://scripts/levels/level1/level1_street.gd" id="2_i2gya"]
+[ext_resource type="PackedScene" uid="uid://dpgnkk1nl32bj" path="res://scenes/structures/house.tscn" id="2_rossb"]
+[ext_resource type="PackedScene" uid="uid://duhoa8i54hmtu" path="res://scenes/structures/save_zone.tscn" id="3_nvkmj"]
+[ext_resource type="PackedScene" uid="uid://crc4sb6cjft48" path="res://scenes/objects/fire_extinguisher.tscn" id="5_niv3v"]
+
+[node name="level1Street" instance=ExtResource("1_vive8")]
+script = ExtResource("2_i2gya")
+
+[node name="House" parent="." index="1" instance=ExtResource("2_rossb")]
+position = Vector2(130, 130)
+
+[node name="SaveZone" parent="." index="2" instance=ExtResource("3_nvkmj")]
+position = Vector2(820, 600)
+
+[node name="Player" parent="." index="3"]
+position = Vector2(140, 371)
+metadata/_edit_group_ = true
+
+[node name="FireExtinguisher" parent="Player" index="3" instance=ExtResource("5_niv3v")]
+position = Vector2(10, 0)
+extinguish_rate = 70.0
+
+[node name="FireSpawn1" type="Marker2D" parent="FireSpawnPoints" index="0"]
+position = Vector2(5, 96)
+
+[node name="FireSpawn2" type="Marker2D" parent="FireSpawnPoints" index="1"]
+position = Vector2(36, 197)
+
+[node name="FireSpawn3" type="Marker2D" parent="FireSpawnPoints" index="2"]
+position = Vector2(229, 95)
+
+[node name="NPCSpawn1" type="Marker2D" parent="NPCSpawnPoints" index="0"]
+position = Vector2(60, 300)
+
+[node name="NPCSpawn2" type="Marker2D" parent="NPCSpawnPoints" index="1"]
+position = Vector2(130, 300)
+
+[node name="NPCSpawn3" type="Marker2D" parent="NPCSpawnPoints" index="2"]
+position = Vector2(200, 300)
+
+[connection signal="player_entered" from="House" to="." method="_on_house_player_entered"]
+[connection signal="npc_entered" from="SaveZone" to="." method="_save_zone_npc_entered"]
+[connection signal="fire_affected" from="Player/FireExtinguisher" to="." method="_on_fire_affected"]

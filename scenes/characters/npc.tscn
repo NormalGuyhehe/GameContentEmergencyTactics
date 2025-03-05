@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://pwg8ccy5rop1"]
+
+[ext_resource type="Texture2D" uid="uid://cvo7n84wtgjcn" path="res://assets/test_assets/npc.png" id="1_luf5c"]
+[ext_resource type="Script" uid="uid://c6fqwllbew6o5" path="res://scripts/characters/npc.gd" id="1_w7yya"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rihof"]
+size = Vector2(26, 26)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_46h7j"]
+radius = 39.0
+
+[node name="NPC" type="CharacterBody2D" groups=["npcs"]]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_w7yya")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.1, 1.1)
+shape = SubResource("RectangleShape2D_rihof")
+
+[node name="NPCImage" type="Sprite2D" parent="."]
+texture = ExtResource("1_luf5c")
+
+[node name="VisibilityArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisibilityArea"]
+shape = SubResource("CircleShape2D_46h7j")
+
+[connection signal="body_entered" from="VisibilityArea" to="." method="_on_player_detected"]

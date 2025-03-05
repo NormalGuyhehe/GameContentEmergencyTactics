@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cboeu2cy2ksbx"]
+
+[ext_resource type="Texture2D" uid="uid://tk0816h8tky6" path="res://assets/test_assets/trans_hangar.png" id="1_rphsg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ch50"]
+size = Vector2(386, 322)
+
+[node name="TransHangar" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1ch50")
+
+[node name="TransHangarImage" type="Sprite2D" parent="."]
+texture = ExtResource("1_rphsg")

@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://crc4sb6cjft48"]
+
+[ext_resource type="Texture2D" uid="uid://dj70td4icu617" path="res://assets/test_assets/fire_extinguisher.png" id="1_os7n7"]
+[ext_resource type="Texture2D" uid="uid://dtdt6ydg4hxwk" path="res://assets/test_assets/white.png" id="2_nm262"]
+[ext_resource type="Script" uid="uid://bqbl00ydg61g7" path="res://scripts/objects/fire_extinguisher.gd" id="2_uivvi"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5mcip"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector3(0, 0, 0)
+spread = 7.0
+initial_velocity_min = 400.0
+initial_velocity_max = 600.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.3
+color = Color(1, 1, 1, 0.803922)
+
+[node name="FireExtinguisher" type="Area2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("2_uivvi")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -5)
+polygon = PackedVector2Array(3, -6, 570, 62, 571, -68)
+
+[node name="FireExtinguisherImage" type="Sprite2D" parent="."]
+texture = ExtResource("1_os7n7")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(3, -11)
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_5mcip")
+texture = ExtResource("2_nm262")
+one_shot = true

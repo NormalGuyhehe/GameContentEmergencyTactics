@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7sokf4iut8w"]
+
+[ext_resource type="PackedScene" uid="uid://cygy5fh6i7lo5" path="res://scenes/levels/level1/level1_base.tscn" id="1_vive8"]
+[ext_resource type="Script" path="res://scenes/levels/level1/level1_street.gd" id="2_i2gya"]
+[ext_resource type="PackedScene" uid="uid://dpgnkk1nl32bj" path="res://scenes/objects/house.tscn" id="2_rossb"]
+[ext_resource type="PackedScene" uid="uid://duhoa8i54hmtu" path="res://scenes/save_zone.tscn" id="3_nvkmj"]
+[ext_resource type="PackedScene" uid="uid://cipuxw2kimtcw" path="res://scenes/objects/fire.tscn" id="4_mxe60"]
+[ext_resource type="PackedScene" uid="uid://crc4sb6cjft48" path="res://scenes/objects/fire_extinguisher.tscn" id="5_niv3v"]
+
+[node name="level1Street" instance=ExtResource("1_vive8")]
+script = ExtResource("2_i2gya")
+
+[node name="Taskbar" parent="." index="0"]
+visible = false
+
+[node name="House" parent="." index="1" instance=ExtResource("2_rossb")]
+position = Vector2(130, 130)
+
+[node name="SaveZone" parent="." index="2" instance=ExtResource("3_nvkmj")]
+position = Vector2(820, 600)
+
+[node name="SavePoint" type="Node" parent="SaveZone" index="2"]
+
+[node name="NPCSave1" type="Marker2D" parent="SaveZone/SavePoint" index="0"]
+position = Vector2(760, 550)
+
+[node name="NPCSave2" type="Marker2D" parent="SaveZone/SavePoint" index="1"]
+position = Vector2(870, 550)
+
+[node name="NPCSave3" type="Marker2D" parent="SaveZone/SavePoint" index="2"]
+position = Vector2(760, 650)
+
+[node name="Player" parent="." index="3"]
+position = Vector2(260, 430)
+metadata/_edit_group_ = true
+
+[node name="FireExtinguisher" parent="Player" index="3" instance=ExtResource("5_niv3v")]
+position = Vector2(14, 2)
+extinguish_rate = 70.0
+
+[node name="Fire1" parent="Fires" index="0" instance=ExtResource("4_mxe60")]
+position = Vector2(40, 40)
+
+[node name="Fire2" parent="Fires" index="1" instance=ExtResource("4_mxe60")]
+position = Vector2(215, 50)
+
+[node name="Fire3" parent="Fires" index="2" instance=ExtResource("4_mxe60")]
+position = Vector2(55, 220)
+
+[node name="NPCSpawn1" type="Marker2D" parent="SpawnPoints" index="0"]
+position = Vector2(60, 300)
+
+[node name="NPCSpawn2" type="Marker2D" parent="SpawnPoints" index="1"]
+position = Vector2(130, 300)
+
+[node name="NPCSpawn3" type="Marker2D" parent="SpawnPoints" index="2"]
+position = Vector2(200, 300)
+
+[connection signal="player_entered" from="House" to="." method="_on_house_player_entered"]
+[connection signal="player_entered" from="SaveZone" to="." method="_save_zone_player_entered"]
+[connection signal="fire_affected" from="Player/FireExtinguisher" to="." method="_on_fire_affected"]
