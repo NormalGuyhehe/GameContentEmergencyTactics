@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqtdxkhq4mftx"]
+
+[ext_resource type="Script" path="res://scripts/levels/level2/mission_start.gd" id="1_ja4qb"]
+[ext_resource type="Texture2D" uid="uid://b3xtpfhu63xk5" path="res://assets/evacuation_plan/building_exit_map.png" id="2_duvl6"]
+
+[node name="MissionStartGUI" type="CanvasLayer"]
+script = ExtResource("1_ja4qb")
+
+[node name="Background" type="Node" parent="."]
+
+[node name="TopRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -163.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.192157, 0.309804, 0.360784, 1)
+
+[node name="BottomRect" type="ColorRect" parent="Background"]
+anchors_preset = -1
+anchor_top = 0.773611
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.150719, 0.250037, 0.293024, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+metadata/_edit_lock_ = true
+
+[node name="PlanImage" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.5
+texture = ExtResource("2_duvl6")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Buttons" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/separation = 5
+
+[node name="ButtonStartPoint1" type="Button" parent="VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+text = "ПЕРВЫЙ ВЫХОД"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonStartPoint2" type="Button" parent="VBoxContainer/Buttons"]
+layout_mode = 2
+text = "ВТОРОЙ ВЫХОД"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonStartPoint3" type="Button" parent="VBoxContainer/Buttons"]
+layout_mode = 2
+text = "ТРЕТИЙ ВЫХОД"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonStartPoint4" type="Button" parent="VBoxContainer/Buttons"]
+layout_mode = 2
+text = "ЧЕТВЁРТЫЙ ВЫХОД"
+metadata/_edit_use_anchors_ = true

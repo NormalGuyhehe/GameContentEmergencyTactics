@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://083pgcwk5qsb"]
+[gd_scene load_steps=7 format=3 uid="uid://083pgcwk5qsb"]
 
 [ext_resource type="PackedScene" uid="uid://bayeswhupyyoo" path="res://scenes/characters/player.tscn" id="1_bybf6"]
 [ext_resource type="PackedScene" uid="uid://bh6x8jm4muot6" path="res://scenes/structures/level_transition.tscn" id="2_6e541"]
 [ext_resource type="PackedScene" uid="uid://c7sokf4iut8w" path="res://scenes/levels/level1/level1_street.tscn" id="3_b1ksp"]
+[ext_resource type="PackedScene" uid="uid://br7wl2w6jf0e3" path="res://scenes/levels/level_2/1_этаж.tscn" id="4_gr3u7"]
 [ext_resource type="PackedScene" uid="uid://dbxk4hy2yx02h" path="res://scenes/structures/stock.tscn" id="4_yqony"]
 [ext_resource type="PackedScene" uid="uid://cboeu2cy2ksbx" path="res://scenes/structures/trans_hangar.tscn" id="5_u0c3s"]
 
@@ -27,6 +28,7 @@ description = "Пожар в доме"
 
 [node name="Level2Transition" parent="LevelTransitions" instance=ExtResource("2_6e541")]
 position = Vector2(1060, 520)
+level_scene = ExtResource("4_gr3u7")
 
 [node name="Level3Transition" parent="LevelTransitions" instance=ExtResource("2_6e541")]
 position = Vector2(1160, 520)
